@@ -294,6 +294,15 @@ public class Grid extends JFrame implements ActionListener {
      }
    }
 
+   public void setGridLayoutArray(){
+      String [] TestGrid = {"0", "1","2","3","4","5","6","7","8","9","10","11","12","13","14","16"};
+      gridLayoutArray = TestGrid;
+   }
+
+   public void setGridLayoutArrayTo(String[] newGridLayout){
+      gridLayoutArray = newGridLayout;
+   }
+
    public int getEmptyIndex(int index){
       if(index -4 >=0)
          if(checkTop(index))
@@ -345,10 +354,11 @@ public class Grid extends JFrame implements ActionListener {
 
    public void printGridLayout(){
       for(int i=0; i<16; i++){
-         System.out.print(gridLayoutArray[i]);
-         if((i+1)%4 == 0)
-            System.out.println();
+         System.out.print(gridLayoutArray[i] + " ");
+         //if((i+1)%4 == 0)
+            //System.out.println();
       }
+      System.out.println();
    }
    public int checkComplexity() {
       int inversions = 0;
@@ -361,12 +371,14 @@ public class Grid extends JFrame implements ActionListener {
       return inversions;
    }
 
-   public void checkIfCompleted(){
+   public boolean checkIfCompleted(){
       String[] solvedArray = {"0","1","2","3","4","5","6","7","8","9","10","11", "12","13","14","16"};
      if( Arrays.equals(gridLayoutArray,solvedArray )){
         JOptionPane.showMessageDialog(null, "Congratulations! You solved the puzzle :)\n" +
                 "Thank you for playing");
+        return true;
      }
+     return false;
    }
 
    public void shuffle(){
@@ -388,7 +400,9 @@ public class Grid extends JFrame implements ActionListener {
 
    }
 
-
+   public String[] getGridLayoutArray(){
+      return gridLayoutArray;
+   }
 
 }
 
